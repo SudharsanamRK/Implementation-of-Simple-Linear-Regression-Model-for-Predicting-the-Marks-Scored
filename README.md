@@ -24,40 +24,54 @@ RegisterNumber: 212222040163
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-df=pd.read_csv('/content/MLSET.csv')
-df.head(10)
-plt.scatter(df['X'],df['Y'])
-plt.xlabel('X')
-plt.ylabel('Y')
-x=df.iloc[:,0:-1]
-y=df.iloc[:,-1]
+
+# Load the data
+df = pd.read_csv('/content/Data.csv')
+
+# Split data into features (x) and target (y)
+x = df[['x']]
+y = df['y']
+
+# Split data into training and testing sets
 from sklearn.model_selection import train_test_split
-X_train,X_test,Y_train,Y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
+
+# Train the Linear Regression model
 from sklearn.linear_model import LinearRegression
-lr=LinearRegression()
-lr.fit(X_train,Y_train)
-X_train
-Y_train
-lr.predict(x_test.iloc[0].values.reshape(1,1))
-plt.scatter(df['X'],df['Y'])
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.plot(X_train,lr.predict(X_train),color='orange')
+lr = LinearRegression()
+lr.fit(x_train, y_train)
+
+# Plot the scatter plot of data points
+plt.scatter(df['x'], df['y'])
+plt.xlabel('x')
+plt.ylabel('y')
+
+# Plot the regression line
+plt.plot(x_train, lr.predict(x_train), color='red')
+
+# Show the plot
+plt.show()
+
+# Coefficient And Intercept Values
 lr.coef_
 lr.intercept_
 ```
 
 ## Output:
 ## 1) Head:
-![head](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/46b8c517-4fff-4a20-8126-acc77ff9fb0a)
+![image](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/6b59b3e2-01c6-4c0e-b3dd-4c3d789d4f49)
+
 ## 2) Graph Of Plotted Data:
-![plotted_data](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/6b009754-9c2d-4c79-a5c6-9bc955a6d789)
+![image](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/2728b20d-789a-42a9-aa87-fbbf4cafa8bb)
+
 ## 3) Trained Data:
-![trained_data](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/2ae3c06d-c5b3-4dec-8991-0394740e2406)
+![image](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/dac31c12-c153-4497-a476-d360590a7ff0)
+
 ## 4) Line Of Regression:
-![l_o_r](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/c564dcae-3ebb-47bd-a723-322f3da62293)
+![image](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/0860b80a-f747-49f2-916c-3ccb440cf8f7)
+
 ## 5) Coefficient And Intercept Values:
-![Coefficient-And-Intercept-Values](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/ed77cee8-c74f-418b-b534-10bbf8a9a7fb)
+![image](https://github.com/SudharsanamRK/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/115523484/c418f0d5-6ae5-4f11-88d2-f2c84f7de37b)
 
 
  
